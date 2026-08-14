@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <title>Explore Rooms</title>
+  <link rel="stylesheet" href="/css/pages/explore-rooms.css">
+</head>
+
+<body>
+
+  <!-- Hamburger Button (Mobile) -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+    <span class="hamburger-line"></span>
+  </button>
+
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="sidebar-container" id="sidebar">
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <img class="img-logo" src="/assets/images/logo.svg">
+    </div>
+
+    <!-- Navigation Items -->
+
+    <div class="navigation">
+      <div class="nav-name stay" onclick="window.location.href='/dashboard'">
+        <img class="nav-img" src="/assets/icons/icon-your_stay.svg">
+        <span>Your stay</span>
+      </div>
+      <div id="theHouse" class="nav-name house">
+        <img class="nav-img" src="/assets/icons/icon-house.svg">
+        <span>The house</span>
+      </div>
+      <div class="nav-name aroundTown" onclick="window.location.href='/around-town'">
+        <img class="nav-img" src="/assets/icons/icon-around_town.svg">
+        <span>Around town</span>
+      </div>
+      <div class="nav-name logout" id="logoutButton">
+        <img class="nav-img" src="/assets/icons/icon-logout.png">
+        <span>Logout</span>
+      </div>
+    </div>
+
+    <!-- Weather Container -->
+
+    <div class="weather-container">
+      <div class="weatherinfo place">TODAY IN LUCKNOW</div>
+      <div id="weather-temp" class="weatherinfo temp"></div>
+      <div id="weather-type" class="weatherinfo type"></div>
+      <img class="weather-img-sun" src="/assets/icons/icon-weather.svg">
+    </div>
+
+    <!-- Copyright Information -->
+
+    <div class="copyright-container">
+      <div class="copyright estyear">EST. 2026</div>
+      <div class="copyright address">LUCKNOW · UP· INDIA</div>
+      <div class="copyright curryear">© 2026 BRIGHT HOMES</div>
+
+    </div>
+  </div>
+
+  <div class="main-container">
+
+    <!-- Hero Section -->
+    <div class="explore-hero" id="exploreHero"></div>
+
+    <!-- Room Container -->
+    <div id="roomContainer"></div>
+
+  </div>
+
+
+  <script type="module" src="/js/pages/explore-rooms.js"></script>
+</body>
+
+</html>

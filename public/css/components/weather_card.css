@@ -1,0 +1,55 @@
+/* ============================
+   WEATHER CARD
+   ============================ */
+.weather-container {
+    position: relative;
+    width: calc(100% - 35px);
+    margin: 0 10px 10px;
+    height: 120px;
+    background: linear-gradient(135deg, #ffdd57 0%, #ffcc33 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.weather-container:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.weather-img-sun {
+    position: absolute;
+    width: 90px;
+    right: 10px;
+    bottom: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.weatherinfo {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--muted);
+    margin-left: 20px;
+    letter-spacing: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.place {
+    margin-top: 12px;
+}
+
+.temp {
+    font-size: clamp(32px, 4vw, 44px);
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    letter-spacing: 0;
+    line-height: 1;
+    margin-top: 4px;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <title>Room Details - Bright Homes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="/css/pages/room-details.css">
+</head>
+
+<body>
+
+  <!-- Hamburger Button (Mobile) -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation">
+    <span class="hamburger-line"></span>
+  </button>
+
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="sidebar-container" id="sidebar">
+
+    <div class="logo-container">
+      <img class="img-logo" src="/assets/images/logo.svg">
+    </div>
+
+    <div class="navigation">
+      <div class="nav-name stay" onclick="window.location.href='/dashboard'">
+        <img class="nav-img" src="/assets/icons/icon-your_stay.svg">
+        <span>Your stay</span>
+      </div>
+      <div id="theHouse" class="nav-name house">
+        <img class="nav-img" src="/assets/icons/icon-house.svg">
+        <span>The house</span>
+      </div>
+      <div class="nav-name aroundTown" onclick="window.location.href='/around-town'">
+        <img class="nav-img" src="/assets/icons/icon-around_town.svg">
+        <span>Around town</span>
+      </div>
+      <div class="nav-name logout" id="logoutButton">
+        <img class="nav-img" src="/assets/icons/icon-logout.png">
+        <span>Logout</span>
+      </div>
+    </div>
+
+    <div class="weather-container">
+      <div class="weatherinfo place">TODAY IN LUCKNOW</div>
+      <div id="weather-temp" class="weatherinfo temp"></div>
+      <div id="weather-type" class="weatherinfo type"></div>
+      <img class="weather-img-sun" src="/assets/icons/icon-weather.svg">
+    </div>
+
+    <div class="copyright-container">
+      <div class="copyright estyear">EST. 2026</div>
+      <div class="copyright address">LUCKNOW · UP· INDIA</div>
+      <div class="copyright curryear">© 2026 BRIGHT HOMES</div>
+    </div>
+  </div>
+
+  <div class="main-container">
+
+    <!-- Room content injected by JS -->
+    <div id="roomDetailsContainer"></div>
+
+    <!-- Available Rooms Section -->
+    <div class="available-section" id="availableSection" style="display:none;">
+      <div class="available-header">
+        <div>
+          <span class="section-eyebrow">Find your room</span>
+          <h2 class="section-title">Available Rooms</h2>
+        </div>
+        <div class="available-count" id="availableCount"></div>
+      </div>
+      <div class="rooms-grid" id="availabilityFormContainer"></div>
+    </div>
+
+    <!-- Similar Rooms Section -->
+    <div class="similar-section" id="similarSection" style="display:none;">
+      <div class="similar-header">
+        <span class="section-eyebrow">Explore more</span>
+        <h2 class="section-title">You might also like</h2>
+      </div>
+      <div class="similar-scroll-wrapper">
+        <button class="similar-arrow left" id="similarLeft" aria-label="Scroll left">&#8592;</button>
+        <div class="similar-scroll" id="similarRooms"></div>
+        <button class="similar-arrow right" id="similarRight" aria-label="Scroll right">&#8594;</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Booking Summary Modal -->
+  <div id="bookingModal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Booking Summary</h2>
+        <button id="crossModal" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-subtitle">Please review your booking before proceeding to payment.</p>
+        <div class="summary-card">
+          <div class="summary-row">
+            <span>Room Type</span>
+            <span id="modalRoomType"></span>
+          </div>
+          <div class="summary-row">
+            <span>Room Number</span>
+            <span id="modalRoomNumber"></span>
+          </div>
+          <div class="summary-row">
+            <span>Guests</span>
+            <span id="modalGuests"></span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-row">
+            <span>Check In</span>
+            <span id="modalCheckIn"></span>
+          </div>
+          <div class="summary-row">
+            <span>Check Out</span>
+            <span id="modalCheckOut"></span>
+          </div>
+          <div class="summary-row">
+            <span>Nights</span>
+            <span id="modalNights"></span>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-row">
+            <span>Price / Night</span>
+            <span>&#8377; <span id="modalPrice"></span></span>
+          </div>
+          <div class="summary-row">
+            <span>Total Amount</span>
+            <span class="totalPrice">&#8377; <span id="modalTotal"></span></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelBooking" class="btn cancelBtn">Cancel</button>
+        <button id="proceedPayment" class="btn confirmBtn">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script type="module" src="/js/pages/room-details.js"></script>
+</body>
+
+</html>

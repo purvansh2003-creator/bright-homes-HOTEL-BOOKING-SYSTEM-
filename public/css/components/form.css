@@ -1,0 +1,202 @@
+/* ============================
+   FORMS
+   ============================ */
+.form-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 380px;
+    animation: fadeInUp 0.5s ease;
+}
+
+.form-status {
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.form-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--ink);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.form-title em {
+    font-style: italic;
+    color: var(--terracotta);
+}
+
+.form-hint {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+    line-height: 1.5;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.field-input {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    padding: 0 14px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.field-input:hover {
+    border-color: #d4cfc9;
+}
+
+.field-input:focus-within {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(199, 99, 72, 0.1);
+}
+
+.field-prefix {
+    color: var(--muted);
+    font-size: 15px;
+    padding-right: 8px;
+    border-right: 1px solid var(--border);
+    margin-right: 10px;
+    user-select: none;
+}
+
+.field-input input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 14px 0;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    width: 100%;
+}
+
+.field-input input::placeholder {
+    color: #b9b3ab;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -6px 0 28px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.form-check-error, .form-error {
+    display: none;
+    background: #FBEAE5;
+    border: 1px solid #E9C4B8;
+    color: #a13f22;
+    font-size: 13px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.toggle-password {
+    width: 35px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.remember input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--terracotta);
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 13px;
+    color: var(--terracotta);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.forgot-link:hover {
+    color: var(--terracotta-dark);
+    text-decoration: underline;
+}
+
+.signup-note {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.signup-note a {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    transition: all var(--transition-fast);
+}
+
+.signup-note a:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+}
+
+@media (max-width: 768px) {
+    .form-panel {
+        padding: 30px 24px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

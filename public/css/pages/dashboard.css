@@ -1,0 +1,719 @@
+@import url(../base/main.css);
+@import url(../base/variables.css);
+@import url(../components/sidebar.css);
+@import url(../components/button.css);
+@import url(../components/weather_card.css);
+@import url(../components/booking_card.css);
+@import url(../components/header.css);
+
+/* ============================================
+   DASHBOARD BACKGROUND
+   ============================================ */
+body {
+    background: 
+        linear-gradient(to bottom, rgba(251, 246, 240, 0.7), rgba(251, 246, 240, 0)),
+        url('/assets/images/hotel-lobby-bg.jpg') center/cover no-repeat fixed;
+}
+
+/* ============================================
+   BOOKED STATE - Receipt Card
+   ============================================ */
+.receipt {
+    transform: rotate(-5deg);
+    box-shadow: var(--shadow-xl);
+    background-color: var(--white);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.receipt:hover {
+    transform: rotate(-2deg) translateY(-4px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.receipt-header {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    min-height: 90px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.rec_header {
+    margin-top: 20px;
+}
+
+.txt {
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    display: block;
+    margin-left: 10px;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.your-stay, .totalamt {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--ink);
+}
+
+.receipt-middle {
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-height: 135px;
+    margin: 0 30px;
+}
+
+.rec_middle {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.date-month {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    color: var(--ink);
+    padding-bottom: 6px;
+}
+
+.day-time {
+    letter-spacing: 0;
+}
+
+.receipt-calculate-container {
+    border-bottom: 2px solid var(--border);
+    min-height: 110px;
+    margin: 0 30px;
+}
+
+.rec_calculate_box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 15px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.rec_calc {
+    letter-spacing: 0;
+}
+
+.receipt-amount-container {
+    min-height: 150px;
+    margin: 0 30px 20px;
+}
+
+.rec_amount_box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 15px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.paid-wise-gbp {
+    font-size: 13px;
+}
+
+.img-barcode {
+    width: 130px;
+    max-width: 100%;
+}
+
+/* ============================================
+   BOOKED STATE - Welcome Card
+   ============================================ */
+.welcome {
+    transform: rotate(6deg);
+    background:
+        radial-gradient(circle at 85% 15%,
+            rgba(255, 225, 170, 0.35) 0%,
+            rgba(255, 195, 120, 0.18) 25%,
+            transparent 45%),
+        linear-gradient(to left bottom,
+            #f67f2f 0%,
+            #E97A42 30%,
+            #dc6434 65%,
+            #c14b27 100%);
+    box-shadow: 0 28px 55px rgba(233, 122, 66, 0.5);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.welcome:hover {
+    transform: rotate(3deg) translateY(-4px);
+    box-shadow: 0 35px 65px rgba(233, 122, 66, 0.6);
+}
+
+.welcome-header {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px dashed rgba(230, 225, 219, 0.5);
+    min-height: 90px;
+    margin: 30px;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: var(--radius-md);
+}
+
+.welcomeCardtxt {
+    color: #E6E1DB;
+    margin-top: 20px;
+}
+
+.img-sun {
+    width: 65px;
+}
+
+.welcome-middle {
+    border: 2px dashed rgba(230, 225, 219, 0.3);
+    min-height: 200px;
+    margin: 0 30px 30px;
+    border-radius: var(--radius-md);
+    padding: 20px;
+}
+
+.noteFromHost {
+    display: block;
+    color: #E6E1DB;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    margin-top: 20px;
+    font-size: clamp(16px, 2.5vw, 22px);
+}
+
+.hostName {
+    font-size: clamp(26px, 4vw, 40px);
+}
+
+.hostTxt {
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.thankYou {
+    font-size: clamp(20px, 3vw, 30px);
+}
+
+/* ============================================
+   NOT BOOKED STATE - Your CSS
+   ============================================ */
+.no-booking-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card.no-booking-card {
+    background: #fffcf7;
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card.no-booking-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.no-booking-header .img-sun {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+}
+
+.no-booking-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.no-booking-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-family: 'Fraunces', serif;
+}
+
+.no-booking-subtitle {
+    font-size: 1rem;
+    color: #6b6b6b;
+    font-weight: 500;
+}
+
+.no-booking-text {
+    font-size: 0.95rem;
+    color: #8a8a8a;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+.card.no-booking-welcome {
+    max-width: 420px;
+    width: 100%;
+}
+
+/* ============================================
+   NOT BOOKED STATE - Welcome Card
+   ============================================ */
+.no-booking-welcome {
+    transform: rotate(4deg);
+    background:
+        radial-gradient(circle at 85% 15%,
+            rgba(255, 225, 170, 0.35) 0%,
+            rgba(255, 195, 120, 0.18) 25%,
+            transparent 45%),
+        linear-gradient(to left bottom,
+            #f67f2f 0%,
+            #E97A42 30%,
+            #dc6434 65%,
+            #c14b27 100%);
+    box-shadow: 0 28px 55px rgba(233, 122, 66, 0.5);
+    transition: transform var(--transition-base);
+}
+
+.no-booking-welcome:hover {
+    transform: rotate(2deg) translateY(-4px);
+}
+
+.no-booking-welcome .welcome-header {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px dashed rgba(230, 225, 219, 0.5);
+    min-height: 90px;
+    margin: 30px;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: var(--radius-md);
+}
+
+.no-booking-welcome .welcomeCardtxt {
+    color: #E6E1DB;
+    margin-top: 20px;
+}
+
+.no-booking-welcome .img-sun {
+    width: 65px;
+}
+
+.no-booking-welcome .welcome-middle {
+    border: 2px dashed rgba(230, 225, 219, 0.3);
+    min-height: 200px;
+    margin: 0 30px 30px;
+    border-radius: var(--radius-md);
+    padding: 20px;
+}
+
+.no-booking-welcome .noteFromHost {
+    display: block;
+    color: #E6E1DB;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    margin-top: 20px;
+    font-size: clamp(16px, 2.5vw, 22px);
+}
+
+.no-booking-welcome .hostName {
+    font-size: clamp(26px, 4vw, 40px);
+}
+
+.no-booking-welcome .hostTxt {
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.no-booking-welcome .thankYou {
+    font-size: clamp(20px, 3vw, 30px);
+}
+
+/* ============================================
+   BOOKING CAROUSEL
+   ============================================ */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.booking-carousel {
+    width: 100%;
+    overflow: clip;
+    padding-top: 10px;
+}
+
+.booking-carousel-track {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 0;
+}
+
+.booking-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Edge fades for a premium finish */
+.carousel-wrapper::before,
+.carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(251, 246, 240, 0.9), transparent);
+}
+
+.carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(251, 246, 240, 0.9), transparent);
+}
+
+/* One slide = one full viewport width */
+.booking-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    padding: 24px 32px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.booking-slide .booking-cards-container {
+    width: 100%;
+    padding: 0;
+}
+
+/* ============================================
+   CANCEL BOOKING BUTTON
+   ============================================ */
+.cancel-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 16px auto 0;
+    padding: 10px 22px;
+    background: white;
+    border: none;
+    border-radius: var(--radius-xl);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.cancel-booking-btn:hover {
+    background: black;
+    color: white;
+}
+
+.cancel-booking-btn svg {
+    stroke: currentColor;
+}
+
+/* ============================================
+   CAROUSEL ARROW BUTTONS
+   ============================================ */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.carousel-arrow svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--ink);
+    transition: stroke var(--transition-base);
+}
+
+.carousel-arrow:hover {
+    background: var(--ink);
+    box-shadow: 0 4px 16px rgba(45, 42, 38, 0.25);
+}
+
+.carousel-arrow:hover svg {
+    stroke: var(--white);
+}
+
+.carousel-arrow.left {
+    left: 16px;
+}
+
+.carousel-arrow.right {
+    right: 16px;
+}
+
+/* ============================================
+   CAROUSEL PAGINATION INDICATORS
+   ============================================ */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px 44px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.carousel-dot:hover {
+    background: var(--terracotta);
+}
+
+.carousel-dot.active {
+    width: 28px;
+    border-radius: 999px;
+    background: var(--ink);
+}
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.booking.status {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #8a8a8a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.booking.name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--ink);
+    line-height: 1.1;
+}
+
+.right-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.printreceipt, .addtocalender {
+    background: var(--white);
+    border: 2px solid var(--border);
+    color: var(--ink);
+}
+
+.printreceipt:hover, .addtocalender:hover {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+}
+
+.browse-rooms {
+    background: var(--white);
+    border: 2px solid var(--border);
+    color: var(--ink);
+}
+
+.browse-rooms:hover {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .booking-cards-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .no-booking-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .receipt {
+        transform: rotate(-3deg);
+    }
+
+    .receipt:hover {
+        transform: rotate(-1deg);
+    }
+
+    .welcome {
+        transform: rotate(3deg);
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .left-container {
+        align-items: center;
+    }
+
+    .right-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .right-container .btn {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .receipt-header,
+    .receipt-middle,
+    .receipt-calculate-container,
+    .receipt-amount-container {
+        margin: 0 20px;
+    }
+
+    .welcome-header,
+    .welcome-middle {
+        margin: 0 20px 20px;
+    }
+
+    .welcome-middle {
+        margin-top: 0;
+    }
+
+    .card.no-booking-card {
+        padding: 2rem;
+    }
+
+    .booking-slide {
+        padding: 16px 16px 32px;
+    }
+
+    .carousel-wrapper::before,
+    .carousel-wrapper::after {
+        width: 24px;
+    }
+
+    .carousel-dots {
+        gap: 10px;
+        padding-bottom: 32px;
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .carousel-arrow.left {
+        left: 8px;
+    }
+
+    .carousel-arrow.right {
+        right: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 15px;
+    }
+
+    .booking.name {
+        font-size: 28px;
+    }
+
+    .card.no-booking-card {
+        padding: 1.5rem;
+    }
+
+    .receipt-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

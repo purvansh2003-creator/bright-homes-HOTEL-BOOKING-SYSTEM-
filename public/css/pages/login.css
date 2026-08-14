@@ -1,0 +1,194 @@
+@import url(../base/main.css);
+@import url(../base/variables.css);
+@import url(../components/form.css);
+@import url(../components/button.css);
+
+.login-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ============================
+   BRAND PANEL (Left)
+   ============================ */
+.brand-panel {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(255, 225, 170, 0.35) 0%, rgba(255, 195, 120, 0.18) 25%, transparent 45%),
+        linear-gradient(to left bottom, #f67f2f 0%, #E97A42 30%, #dc6434 65%, #c14b27 100%);
+}
+
+.brand-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-sun {
+    width: 100px;
+    transform: rotate(32deg);
+    animation: rotateSun 20s linear infinite;
+}
+
+@keyframes rotateSun {
+    from { transform: rotate(32deg); }
+    to { transform: rotate(392deg); }
+}
+
+.brand-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: #FBF6F0;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.brand-copy {
+    max-width: 380px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.brand-eyebrow {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+    font-weight: 500;
+}
+
+.brand-headline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    color: white;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+}
+
+.brand-sub {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+
+/* Keycard */
+.keycard {
+    align-self: flex-start;
+    transform: rotate(-6deg);
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    transition: transform var(--transition-base);
+    animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.keycard:hover {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+.keycard-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.keycard-room {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-top: 4px;
+}
+
+.keycard-dots {
+    display: flex;
+    gap: 5px;
+    margin-top: 12px;
+}
+
+.keycard-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+    .brand-panel {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+    }
+
+    .brand-panel {
+        min-height: 40vh;
+        padding: 30px 24px;
+    }
+
+    .brand-mark {
+        font-size: 28px;
+    }
+
+    .img-sun {
+        width: 60px;
+    }
+
+    .brand-headline {
+        font-size: 1.8rem;
+    }
+
+    .brand-copy {
+        max-width: 100%;
+    }
+
+    .keycard {
+        display: none;
+    }
+
+    .form-panel {
+        padding: 30px 24px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-panel {
+        min-height: 35vh;
+        padding: 20px;
+    }
+
+    .brand-mark {
+        font-size: 24px;
+    }
+
+    .brand-headline {
+        font-size: 1.5rem;
+    }
+
+    .brand-sub {
+        font-size: 14px;
+    }
+
+    .form-panel {
+        padding: 20px 16px 30px;
+    }
+}

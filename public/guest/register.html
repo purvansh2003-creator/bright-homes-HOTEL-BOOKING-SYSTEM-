@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Bright Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/pages/login.css">
+</head>
+
+<body>
+
+  <div class="login-wrapper">
+
+    <!-- LEFT: brand / atmosphere panel -->
+    <div class="brand-panel">
+      <div class="brand-panel-header">
+        <span class="brand-mark">Bright Homes .</span>
+        <img class="img-sun" src="../assets/logo/bright-homes-logo.svg">
+      </div>
+
+
+      <div class="brand-copy">
+        <span class="brand-eyebrow">WELCOME</span>
+        <h1 class="brand-headline">Your home away<br>from home,<br>begins here.</h1>
+        <p class="brand-sub">Sign up with your mobile number to book, manage, and enjoy your stays.</p>
+      </div>
+
+      <div class="keycard">
+        <span class="keycard-label">Current stay</span>
+        <div class="keycard-room">No bookings</div>
+        <div class="keycard-dots"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: form panel -->
+    <div class="form-panel">
+      <div class="form-card">
+        <span class="form-status">Guest sign up</span>
+        <h2 class="form-title">Register to your <br> <em>new account</em></h2>
+        <p class="form-hint">Enter the neccessary details for account creation.</p>
+
+        <div class="form-check-error" id="formCheckError" style="display: none;">
+        </div>
+
+        <form action="/login" method="POST" id="registerForm">
+
+          <div class="field">
+            <div class="field">
+              <label for="Name">Name</label>
+              <div class="field-input">
+                <input type="text" id="Name" name="Name" placeholder="Dennis" required>
+              </div>
+            </div>
+
+            <label for="mobile-no">Mobile number</label>
+            <div class="field-input">
+              <span class="field-prefix">+91</span>
+              <input type="tel" name="mobile" placeholder="98765 43210" inputmode="numeric" id="mobile-no"
+                maxlength="10" required>
+            </div>
+            <p id="formMobileError" class="form-error" style="display: none;"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <div class="field-input">
+              <input type="email" id="email" name="email" placeholder="dennis21@gmail.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="field-input">
+              <input type="password" id="registerPassword" name="password" placeholder="••••••••" required>
+              <img class="toggle-password" src="../assets/icons/icon-show_password.png" id="toggleRegisterPassword">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="confirm-password">Confirm Password</label>
+            <div class="field-input">
+              <input type="password" id="confirmPassword" name="confirm-password" placeholder="••••••••" required>
+              <img class="toggle-password" src="../assets/icons/icon-show_password.png" id="toggleConfirmPassword">
+            </div>
+            <p id="formConfirmPasswordError" class="form-error" style="display: none;"></p>
+          </div>
+
+          <button type="submit" class="btn-register">Register</button>
+        </form>
+        <p class="signup-note">Already have an account &nbsp<a href="../login">Sign-in</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="../js/pages/register.js"></script>
+</body>
+
+</html>

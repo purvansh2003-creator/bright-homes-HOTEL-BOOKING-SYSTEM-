@@ -1,0 +1,594 @@
+@import url(../base/main.css);
+@import url(../base/variables.css);
+@import url(../components/sidebar.css);
+@import url(../components/button.css);
+@import url(../components/weather_card.css);
+
+/* =====================================================
+   AROUND TOWN PAGE
+   ===================================================== */
+.main-container {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--muted);
+    overflow-x: hidden;
+}
+
+p {
+    margin: 0;
+}
+
+/* =====================================================
+   SKELETON LOADING
+   ===================================================== */
+@keyframes shimmer {
+    0% { background-position: -800px 0; }
+    100% { background-position: 800px 0; }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #eee 25%, #e0dcd6 50%, #eee 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: var(--radius-md);
+}
+
+.skeleton-card {
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+.skeleton-card-top {
+    height: 160px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.skeleton-card-body {
+    padding: 24px;
+}
+
+.skeleton-heading {
+    height: 22px;
+    width: 60%;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.skeleton-text {
+    height: 14px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.skeleton-text.short {
+    width: 45%;
+}
+
+.skeleton-badge {
+    width: 70px;
+    height: 28px;
+    border-radius: var(--radius-xl);
+}
+
+.skeleton-btn {
+    width: 120px;
+    height: 38px;
+    border-radius: var(--radius-xl);
+}
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+.town-hero {
+    background: linear-gradient(135deg, var(--ink) 0%, #3d3832 50%, #4a4238 100%);
+    padding: 50px 40px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.town-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(199, 99, 72, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.town-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(199, 99, 72, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.town-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: white;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--terracotta);
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 450px;
+    line-height: 1.5;
+}
+
+.hero-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.place-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-xl);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.place-count-badge .count {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--terracotta);
+}
+
+.back-to-dashboard {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.back-to-dashboard:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.back-to-dashboard svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* =====================================================
+   CATEGORY FILTERS
+   ===================================================== */
+.filters-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 30px 40px 0;
+}
+
+.filters-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-xl);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+}
+
+/* =====================================================
+   PLACES GRID
+   ===================================================== */
+.places-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 28px 40px 60px;
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* =====================================================
+   PLACE CARD
+   ===================================================== */
+.place-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.place-card:hover {
+    border-color: var(--terracotta);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* Card Top - Category Strip */
+.place-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px 14px;
+    background: linear-gradient(135deg, rgba(199, 99, 72, 0.04), rgba(199, 99, 72, 0.01));
+    border-bottom: 1px solid var(--border);
+}
+
+.place-category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--radius-xl);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.place-category-badge.attraction {
+    background: rgba(199, 99, 72, 0.1);
+    color: var(--terracotta);
+}
+
+.place-category-badge.restaurant {
+    background: rgba(45, 42, 38, 0.08);
+    color: var(--ink);
+}
+
+.place-category-badge.cafe {
+    background: rgba(139, 90, 43, 0.1);
+    color: #8B5A2B;
+}
+
+.place-category-badge.park {
+    background: rgba(76, 140, 60, 0.1);
+    color: #4C8C3C;
+}
+
+.place-category-badge.shopping {
+    background: rgba(120, 80, 160, 0.1);
+    color: #7850A0;
+}
+
+.place-category-icon {
+    font-size: 13px;
+}
+
+.place-distance {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.place-distance svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+}
+
+/* Card Body */
+.place-card-body {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.place-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.place-address {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.place-address svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.5;
+}
+
+.place-address.empty {
+    color: rgba(76, 76, 76, 0.4);
+    font-style: italic;
+}
+
+/* Card Footer */
+.place-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 22px 20px;
+    margin-top: auto;
+}
+
+.place-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--ink);
+    color: white;
+    border-radius: var(--radius-xl);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.place-map-link:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+}
+
+.place-map-link svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* =====================================================
+   STATES - Error / Empty
+   ===================================================== */
+.state-container {
+    text-align: center;
+    padding: 80px 40px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.state-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, rgba(199, 99, 72, 0.1), rgba(199, 99, 72, 0.03));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.state-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+}
+
+.state-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.retry-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: var(--radius-xl);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.retry-btn:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+    .places-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .town-hero {
+        padding: 30px 20px 40px;
+    }
+
+    .town-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filters-section {
+        padding: 20px 20px 0;
+    }
+
+    .filters-bar {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .places-section {
+        padding: 20px 20px 40px;
+    }
+
+    .places-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .place-card-body {
+        padding: 18px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .town-hero {
+        padding: 25px 15px 30px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .place-count-badge,
+    .back-to-dashboard {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filters-section {
+        padding: 16px 15px 0;
+    }
+
+    .filters-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+
+    .filters-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .places-section {
+        padding: 16px 15px 40px;
+    }
+
+    .place-card-top {
+        padding: 14px 18px 12px;
+    }
+
+    .place-card-body {
+        padding: 16px 18px;
+    }
+
+    .place-card-footer {
+        padding: 0 18px 16px;
+    }
+}
