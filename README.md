@@ -111,7 +111,3 @@ const SEARCH_RADIUS = 5000;  // metres (5 km)
 3. Commit your changes
 4. Push to the branch
 5. Open a pull request
-
-## 📄 License
-
-ISC
